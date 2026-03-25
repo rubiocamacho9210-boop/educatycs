@@ -6,7 +6,7 @@ Supports SQLite for local development and PostgreSQL for production.
 
 from urllib.parse import urlsplit, urlunsplit
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
 from app.config import get_settings
@@ -57,3 +57,16 @@ def get_db():
 def init_db():
     """Create all tables."""
     Base.metadata.create_all(bind=engine)
+    if engine.dialect.name == "postgresql":
+        _ensure_postgres_schema()
+
+
+def _ensure_postgres_schema() -> None:
+    """Apply lightweight production-safe schema adjustments missing from create_all()."""
+    statements = [
+        "ALTER TABLE opportunities ALTER COLUMN title TYPE TEXT",
+    ]
+
+    with engine.begin() as connection:
+        for statement in statements:
+            connection.execute(text(statement))
