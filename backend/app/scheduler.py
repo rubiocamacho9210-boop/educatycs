@@ -20,6 +20,8 @@ from app.scrapers import (
     KhanAcademyScraper,
     SantanderScraper,
     UNAMScraper,
+    IdiomaScraper,
+    BecasScraper,
 )
 
 # Scheduler instance
@@ -36,6 +38,8 @@ SCRAPERS = {
     "khan": KhanAcademyScraper,
     "santander": SantanderScraper,
     "unam": UNAMScraper,
+    "idiomas": IdiomaScraper,
+    "becas": BecasScraper,
 }
 
 
@@ -104,6 +108,8 @@ def _save_opportunities(db, opportunities, source: str) -> tuple[int, int]:
                 source_url=str(opp.source_url),
                 source=source,
                 location=opp.location,
+                start_date=opp.start_date,
+                end_date=opp.end_date,
                 is_free=opp.is_free,
                 tags=opp.tags,
             )

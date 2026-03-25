@@ -14,6 +14,8 @@ EXPECTED_SOURCES = {
     "khan",
     "santander",
     "unam",
+    "idiomas",
+    "becas",
 }
 ADMIN_HEADERS = {"X-Admin-Key": "test-admin-key"}
 
