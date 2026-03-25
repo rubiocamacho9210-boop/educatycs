@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { Opportunity, OpportunityType } from '~/types/opportunity'
+import { buildApiUrl } from '~/utils/api'
 
 const route = useRoute()
 const config = useRuntimeConfig()
 
 const { data: opportunity, status, error } = await useFetch<Opportunity>(
-  `/opportunities/${route.params.id}`,
-  { baseURL: config.public.apiBase },
+  buildApiUrl(config.public.apiBase, `/opportunities/${route.params.id}`),
 )
 
 const typeLabels: Record<OpportunityType, string> = {

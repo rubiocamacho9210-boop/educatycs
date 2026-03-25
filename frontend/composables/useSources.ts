@@ -1,4 +1,5 @@
 import type { SourceInfo } from '~/types/opportunity'
+import { buildApiUrl } from '~/utils/api'
 
 interface SourcesApiResponse {
   sources: Record<string, { name: string; count: number }>
@@ -7,8 +8,7 @@ interface SourcesApiResponse {
 export const useSources = () => {
   const config = useRuntimeConfig()
 
-  return useFetch('/opportunities/sources', {
-    baseURL: config.public.apiBase,
+  return useFetch(buildApiUrl(config.public.apiBase, '/opportunities/sources'), {
     transform: (raw: SourcesApiResponse): SourceInfo[] =>
       Object.entries(raw.sources).map(([key, info]) => ({
         value: key,
