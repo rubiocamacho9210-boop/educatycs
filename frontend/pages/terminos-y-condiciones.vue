@@ -110,6 +110,9 @@ onUnmounted(() => {
         <p class="mt-3 text-sm leading-7 text-slate-700 dark:text-slate-100">
           La información publicada en la Plataforma proviene de fuentes externas y de acceso público. El Titular realiza esfuerzos razonables para mantenerla actualizada; sin embargo, <strong class="text-slate-900 dark:text-white">no garantiza</strong> la exactitud, completitud, vigencia ni disponibilidad de ninguna convocatoria, beca, curso o taller referenciado. Los requisitos de inscripción, fechas límite, montos de financiamiento, criterios de selección y demás condiciones particulares son determinados de manera exclusiva por cada institución oferente, y el Usuario deberá verificarlos directamente con la fuente correspondiente.
         </p>
+        <p class="mt-3 text-sm leading-7 text-slate-700 dark:text-slate-100">
+          Asimismo, el Usuario reconoce que el acceso a determinados cursos, becas, talleres u otras oportunidades educativas referenciadas en la Plataforma <strong class="text-slate-900 dark:text-white">puede requerir el registro o la creación de una cuenta en la plataforma o institución tercera correspondiente</strong>, así como el cumplimiento de los términos, condiciones y políticas de privacidad propias de dicha institución. El Titular no es responsable de los requisitos de registro, las políticas de acceso, los cambios de modalidad (gratuita a de pago), ni de ninguna otra condición impuesta por los servicios de terceros. EducaTYCs únicamente facilita el enlace a dichas oportunidades y <strong class="text-slate-900 dark:text-white">no tiene ningún vínculo, afiliación ni responsabilidad</strong> respecto de la operación, contenido o disponibilidad de las plataformas externas.
+        </p>
       </div>
 
       <div ref="s4El">
