@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: educatycs
+      POSTGRES_USER: educatycs
+      POSTGRES_PASSWORD: educatycs
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U educatycs -d educatycs"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://educatycs:educatycs@postgres:5432/educatycs
+      SCHEDULER_INTERVAL_HOURS: 6
+      DEBUG: "false"
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8080
+      ADMIN_API_KEY: change-me
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

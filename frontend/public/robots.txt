@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /panel-admin
+
+Sitemap: https://educatycs.mx/sitemap.xml

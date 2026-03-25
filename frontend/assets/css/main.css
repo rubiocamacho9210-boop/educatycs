@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply text-ink;
+    background-color: #050816;
+    background-image:
+      radial-gradient(1200px 680px at 8% 10%, rgb(56 189 248 / 0.2), transparent 70%),
+      radial-gradient(1020px 640px at 82% 14%, rgb(168 85 247 / 0.22), transparent 70%),
+      radial-gradient(980px 620px at 52% 90%, rgb(244 114 182 / 0.2), transparent 72%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 120% 120%;
+    animation: neon-shift 20s ease-in-out infinite alternate;
+  }
+
+  h1, h2, h3 {
+    @apply font-semibold leading-tight tracking-tight;
+  }
+}
+
+@layer components {
+  .neon-bg {
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+  }
+
+  .neon-bg::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(80px);
+    opacity: 0.45;
+    background: conic-gradient(
+      from 0deg,
+      rgb(34 211 238 / 0.42),
+      rgb(167 139 250 / 0.38),
+      rgb(236 72 153 / 0.38),
+      rgb(34 211 238 / 0.42)
+    );
+    animation: neon-flow 16s ease-in-out infinite alternate;
+  }
+
+  .neon-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass-panel {
+    background: linear-gradient(180deg, rgb(15 23 42 / 0.62), rgb(30 41 59 / 0.5));
+    border: 1px solid rgb(103 232 249 / 0.26);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 36px rgb(15 23 42 / 0.32);
+  }
+
+  .glass-card {
+    background:
+      linear-gradient(165deg, rgb(15 23 42 / 0.78), rgb(49 46 129 / 0.52) 60%, rgb(88 28 135 / 0.46)),
+      rgb(15 23 42 / 0.75);
+    border: 1px solid rgb(167 139 250 / 0.28);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgb(15 23 42 / 0.35);
+  }
+
+  .neon-btn {
+    background-image: linear-gradient(90deg, rgb(34 211 238), rgb(96 165 250), rgb(168 85 247));
+    color: rgb(2 6 23);
+    box-shadow: 0 6px 18px rgb(56 189 248 / 0.45);
+  }
+
+  .neon-btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 10px 24px rgb(168 85 247 / 0.42);
+  }
+
+  .logo-rail-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .logo-rail-track {
+    width: max-content;
+    animation: logo-rail 110s linear infinite;
+  }
+}
+
+@keyframes neon-flow {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1%, 2%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(2%, -2%, 0) scale(1.03);
+  }
+}
+
+@keyframes neon-shift {
+  0% {
+    background-position: 0% 8%, 100% 0%, 50% 100%;
+  }
+  100% {
+    background-position: 6% 0%, 96% 12%, 52% 90%;
+  }
+}
+
+@keyframes logo-rail {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-rail-track {
+    animation: none;
+  }
+}
+
+/* ─── Light mode — clean Coursera-style ─── */
+html:not(.dark) body {
+  background-color: #eef4fb;   /* light blue-gray, no gradients */
+  background-image: none;
+  animation: none;
+  color: #1e293b;
+}
+
+/* completely hide neon blob in light mode */
+html:not(.dark) .neon-bg::before {
+  opacity: 0;
+}
+
+/* FilterBar and stat panels */
+html:not(.dark) .glass-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  backdrop-filter: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+/* All cards */
+html:not(.dark) .glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  backdrop-filter: none;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.07), 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+/* Boost transparent badge backgrounds */
+html:not(.dark) .bg-cyan-300\/12  { background-color: rgba(34, 211, 238, 0.15); }
+html:not(.dark) .bg-cyan-300\/15  { background-color: rgba(34, 211, 238, 0.18); }
+html:not(.dark) .bg-cyan-300\/18  { background-color: rgba(34, 211, 238, 0.22); }
+html:not(.dark) .bg-emerald-300\/15 { background-color: rgba(52, 211, 153, 0.18); }
+html:not(.dark) .bg-fuchsia-300\/12 { background-color: rgba(232, 121, 249, 0.15); }
+html:not(.dark) .bg-fuchsia-400\/15 { background-color: rgba(232, 121, 249, 0.18); }
+html:not(.dark) .bg-purple-300\/15  { background-color: rgba(192, 132, 252, 0.18); }
+html:not(.dark) .bg-indigo-300\/15  { background-color: rgba(129, 140, 248, 0.18); }
+html:not(.dark) .bg-violet-300\/12  { background-color: rgba(167, 139, 250, 0.15); }
+html:not(.dark) .bg-slate-900\/45   { background-color: rgba(248, 250, 252, 0.95); }
+html:not(.dark) .bg-slate-900\/50   { background-color: rgba(248, 250, 252, 0.95); }
+
+html:not(.dark) select option {
+  background: #fff;
+  color: #1e293b;
+}
