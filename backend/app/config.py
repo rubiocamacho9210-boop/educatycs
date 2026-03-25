@@ -9,7 +9,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # Database
-    database_url: str = "sqlite:///educatycs.db"
+    database_url: str = "sqlite:///db.sqlite3"
 
     # Server
     host: str = "0.0.0.0"

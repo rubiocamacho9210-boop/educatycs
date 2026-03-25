@@ -38,6 +38,8 @@ env/
 *.db
 *.sqlite
 *.sqlite3
+# Excepción: datos generados localmente para Railway
+!db.sqlite3
 
 # Environment variables
 .env

@@ -19,6 +19,8 @@ backend/.ruff_cache/
 backend/*.db
 backend/*.sqlite
 backend/*.sqlite3
+# Excepción: la base de datos generada localmente se sube al repo para Railway
+!backend/db.sqlite3
 backend/.env
 backend/.env.local
 
