@@ -14,7 +14,7 @@ from app.models import OpportunityModel
 from app.scrapers import (
     CapacitateScraper,
     GoogleActivateScraper,
-    ConectaEmpleoScraper,
+    AprendeMXScraper,
     EdxSpanishScraper,
     CourseraScraper,
     KhanAcademyScraper,
@@ -32,7 +32,7 @@ logger = logging.getLogger("educatycs.scheduler")
 SCRAPERS = {
     "capacitate": CapacitateScraper,
     "google": GoogleActivateScraper,
-    "conecta_empleo": ConectaEmpleoScraper,
+    "aprende_mx": AprendeMXScraper,
     "edx": EdxSpanishScraper,
     "coursera": CourseraScraper,
     "khan": KhanAcademyScraper,

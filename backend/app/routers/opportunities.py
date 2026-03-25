@@ -27,7 +27,7 @@ from app.scrapers import (
     CourseraScraper,
     CapacitateScraper,
     GoogleActivateScraper,
-    ConectaEmpleoScraper,
+    AprendeMXScraper,
     EdxSpanishScraper,
     KhanAcademyScraper,
     SantanderScraper,
@@ -44,7 +44,7 @@ logger = logging.getLogger("educatycs.router")
 SCRAPERS = {
     "capacitate": CapacitateScraper,
     "google": GoogleActivateScraper,
-    "conecta_empleo": ConectaEmpleoScraper,
+    "aprende_mx": AprendeMXScraper,
     "edx": EdxSpanishScraper,
     "coursera": CourseraScraper,
     "khan": KhanAcademyScraper,

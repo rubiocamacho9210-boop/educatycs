@@ -46,18 +46,15 @@ class SantanderScraper(BaseScraper):
                         continue
 
                     data = json.loads(html.unescape(soa_item))
-                    course_id = data.get("externalIdentifier")
-
-                    if not course_id:
-                        continue
 
                     title = data.get("name", "").strip()
                     if not title or len(title) < 5:
                         continue
 
-                    course_url = (
-                        f"https://app.santanderopenacademy.com/es/course/{course_id}"
-                    )
+                    # Prefer detailUrl, fall back to actionUrl
+                    course_url = data.get("detailUrl") or data.get("actionUrl") or ""
+                    if not course_url:
+                        continue
 
                     if course_url in seen_urls:
                         continue

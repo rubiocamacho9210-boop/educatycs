@@ -32,8 +32,12 @@ class EdxSpanishScraper(BaseScraper):
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 page.wait_for_timeout(1000)
 
-            # Find course links (exclude category pages)
-            links = page.query_selector_all('a[href*="/learn/"][href*="?index="]')
+            # Find course links from search results (?index= is the tracking
+            # param edX adds to links rendered as search result cards)
+            links = page.query_selector_all(
+                'a[href*="/learn/"][href*="?index="], '
+                'a[href*="/learn/"][href*="index=rv_"]'
+            )
 
             seen = set()
             for link in links:

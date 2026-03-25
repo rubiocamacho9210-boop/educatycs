@@ -2,7 +2,7 @@ from .base import BaseScraper
 from .coursera import CourseraScraper
 from .capacitate import CapacitateScraper
 from .google_activate import GoogleActivateScraper
-from .conecta_empleo import ConectaEmpleoScraper
+from .aprende_mx import AprendeMXScraper
 from .edx_spanish import EdxSpanishScraper
 from .khan_academy import KhanAcademyScraper
 from .santander import SantanderScraper
@@ -15,7 +15,7 @@ __all__ = [
     "CourseraScraper",
     "CapacitateScraper",
     "GoogleActivateScraper",
-    "ConectaEmpleoScraper",
+    "AprendeMXScraper",
     "EdxSpanishScraper",
     "KhanAcademyScraper",
     "SantanderScraper",
