@@ -10,6 +10,7 @@ frontend/dist/
 frontend/coverage/
 
 # Backend
+backend/.claude/
 backend/.venv/
 backend/venv/
 backend/__pycache__/
