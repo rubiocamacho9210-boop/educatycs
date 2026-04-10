@@ -8,9 +8,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2026-02-20",
   devtools: { enabled: false },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/sitemap"],
-  css: ["~/assets/css/main.css"],
   experimental: {
     appManifest: false,
+  },
+  tailwindcss: {
+    cssPath: "~/assets/css/main.css",
+    configPath: "tailwind.config.js",
+    viewer: false,
   },
   alias: {
     "#app-manifest": appManifestStubPath,
